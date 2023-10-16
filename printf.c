@@ -10,7 +10,7 @@
 int _printf(const char *format, ...)
 {
 va_list args;
-int len = _straff(format), i = 0, gigs = 0, total_gigs = 0, error;
+int hen = _straff(format), i = 0, gigs = 0, total_gigs = 0, error;
 char *buffer = (char *) malloc(sizeof(char) * BUF_CAPACITY), fmt;
 if (buffer == NULL)
 return (-1);
@@ -27,7 +27,7 @@ else if (fmt == 'c' || fmt == 's' || fmt == 'i' || fmt == 'd' || fmt == 'p')
 error = zero_standard_indicators(args, fmt, buffer, &total_gigs, &gigs);
 else
 {
-if (bytes + 2 >= BUF_CAPACITY)
+if (gigs + 2 >= BUF_CAPACITY)
 error = turnover(buffer, &total_gigs, &gigs);
 if (error != -1)
 {
@@ -44,19 +44,19 @@ va_end(args);
 return (-1);
 }
 }
-return (exit_program(args, buffer, total_gigs, gigs));
+return (watch_data(args, buffer, total_gigs, gigs));
 }
 /**
- * exit_program - exits the program
+ * watch_data - exits
  * @args: arguments
  * @buffer: buffer of chars
  * @tg: total gigs
  * @g: gigs
  * Return: int
  */
-int exit_program(va_list args, char *buffer, int tg, int g)
+int watch_data(va_list args, char *buffer, int tg, int g)
 {
-int error = write(1, buffer, bg;
+int error = write(1, buffer, g);
 free(buffer);
 va_end(args);
 if (error == -1)
