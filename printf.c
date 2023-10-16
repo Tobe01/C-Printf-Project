@@ -31,8 +31,8 @@ if (gigs + 2 >= BUF_CAPACITY)
 error = turnover(buffer, &total_gigs, &gigs);
 if (error != -1)
 {
-buffer[bytes++] = '%';
-buffer[bytes++] = fmt;
+buffer[gigs++] = '%';
+buffer[gigs++] = fmt;
 }
 }
 } else
