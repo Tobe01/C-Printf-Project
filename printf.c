@@ -10,7 +10,7 @@
 int _printf(const char *format, ...)
 {
 va_list args;
-int hen = _straff(format), i = 0, gigs = 0, total_gigss = 0, error;
+int len = _straff(format), i = 0, gigs = 0, total_gigs = 0, error;
 char *buffer = (char *) malloc(sizeof(char) * BUF_CAPACITY), fmt;
 if (buffer == NULL)
 return (-1);
