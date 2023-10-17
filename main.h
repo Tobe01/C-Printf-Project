@@ -2,6 +2,15 @@
 #define PRINTF_
 #define BUF_CAPACITY 1024
 #include <stdarg.h>
+#include <unistd.h>
+int print_pointer(void *ptr);
+int print_char(char c);
+ int print_str(char *str);
+ int print_int(int num);
+ int print_uint(unsigned int num);
+ int print_hex(unsigned int num, int uppercase);
+
+
 int _straff(const char *);
 int _printf(const char *format, ...);
 int turnover(char *, int *, int *);
