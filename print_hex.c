@@ -8,7 +8,8 @@
 int print_hex(unsigned int num, int uppercase)
 {
 	int count = 0, i, remainder, index;
-	char hex_digits[] = "0123456789abcdef", hex_string[20];
+	char hex_digits[] = "0123456789abcdef";
+	char hex_string[20];
 
 	if (uppercase)
 	{
@@ -27,7 +28,7 @@ int print_hex(unsigned int num, int uppercase)
 	}
 	else
 	{
-		hex_string[20]; /* Assuming a maximum of 20 characters for*/
+		/* Assuming a maximum of 20 characters for*/
 		/*the hexadecimal representation*/
 		index = 0;
 
