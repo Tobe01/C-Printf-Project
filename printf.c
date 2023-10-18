@@ -23,20 +23,20 @@ if (*ft == '%')
 if (*ft == '%')
 buffer[bytes++] = *ft;
 else if (*ft == 'c' || *ft == 's' || *ft == 'i' || *ft == 'd' || *ft == 'p')
-error = none_standard_specifiers(args, *ft, buffer, &total_bytes, &bytes);
+error = non_custom_specifier(args, *ft, buffer, &total_bytes, &bytes);
 else if (*ft == 'b' || *ft == 'R' || *ft == 'S' || *ft == 'r')
-error = standard_specifiers(args, *ft, buffer, &total_bytes, &bytes);
+error = custom_specifier(args, *ft, buffer, &total_bytes, &bytes);
 else if (*ft == '0' || *ft == '-' || *ft == '+' || *ft == '#' || *ft == ' ')
 error = 0;
 else if (*ft == 'l' || *ft == 'h')
 error = 0;
 else if (*ft == 'u' || *ft == 'o' || *ft == 'x' || *ft == 'X')
-error = none_standard_specifiers(args, *ft, buffer, &total_bytes, &bytes);
+error = non_custom_specifier(args, *ft, buffer, &total_bytes, &bytes);
 else
 error = handle_unknown(*ft, buffer, &total_bytes, &bytes);
 }
 else
-error = none_specifiers(*ft, buffer, &total_bytes, &bytes);
+error = non_specifier(*ft, buffer, &total_bytes, &bytes);
 if (error == -1)
 return (exit_error(args));
 ft++;
@@ -81,7 +81,7 @@ int handle_unknown(char c, char *buffer, int *total_bytes, int *bytes)
 {
 int error = 0;
 if (*bytes + 2 > BUF_CAPACITY)
-error = turnover(buffer, total_bytes, bytes);
+error = overflow(buffer, total_bytes, bytes);
 if (error != -1)
 {
 if (c == '%')
@@ -105,12 +105,12 @@ return (-1);
  * @b: bytes
  * Return: int
  */
-int none_specifiers(char c, char *buffer, int *tb, int *b)
+int non_specifier(char c, char *buffer, int *tb, int *b)
 {
 int error = 0;
 if (c == '\n')
 {
-error = turnover(buffer, tb, b);
+error = overflow(buffer, tb, b);
 if (error == -1)
 return (-1);
 buffer[(*b)++] = c;
@@ -120,7 +120,7 @@ else
 buffer[(*b)++] = c;
 }
 if (*b > BUF_CAPACITY)
-error = turnover(buffer, tb, b);
+error = overflow(buffer, tb, b);
 if (error == -1)
 return (-1);
 return (0);
