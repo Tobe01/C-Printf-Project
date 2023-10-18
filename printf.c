@@ -36,7 +36,7 @@ else
 error = handle_unknown(*ft, buffer, &total_bytes, &bytes);
 }
 else
-error = none_specifier(*ft, buffer, &total_bytes, &bytes);
+error = none_specifiers(*ft, buffer, &total_bytes, &bytes);
 if (error == -1)
 return (exit_error(args));
 ft++;
@@ -98,14 +98,14 @@ return (0);
 return (-1);
 }
 /**
- * none_specifier - handle none specifiers
+ * none_specifiers - handle none specifiers
  * @c: char
  * @buffer: buffer
  * @tb: total_bytes
  * @b: bytes
  * Return: int
  */
-int none_specifier(char c, char *buffer, int *tb, int *b)
+int none_specifiers(char c, char *buffer, int *tb, int *b)
 {
 int error = 0;
 if (c == '\n')
